@@ -1,0 +1,3 @@
+修剪basic模板文件及代码，打印出hello world
+1、删除不需要的控制器，视图，模型
+2、使得页面仅显示出hello world
