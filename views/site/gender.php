@@ -21,7 +21,7 @@ $js=<<<JS
             text: '性别比例'
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            pointFormat: '{series.name}: <b>{point.y}</b>'
         },
         plotOptions: {
             pie: {
