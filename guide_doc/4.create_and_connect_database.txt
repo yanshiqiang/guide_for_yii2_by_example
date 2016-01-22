@@ -1,0 +1,7 @@
+1. create a database "guide"
+   CREATE DATABASE IF NOT EXISTS `guide` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+2. create a table "selectclass" in guide db
+   CREATE TABLE `guide`.`selectclass` ( `stuno` VARCHAR(10) NOT NULL , `gender` VARCHAR(2) NOT NULL , `major` VARCHAR(30) NOT NULL , `grade` VARCHAR(5) NOT NULL , PRIMARY KEY (`stuno`) ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT = 'student select class info'; 
+3. import data
+    import into selectclass taable from stuclass.csv
+4. modify config/db.php
