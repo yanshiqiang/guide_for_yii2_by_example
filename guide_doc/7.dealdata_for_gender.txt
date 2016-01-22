@@ -1,3 +1,5 @@
 1.how to show  the data through Controller
 2.how to data encode use json format ,ready for highchart using.
 3,send the data to view
+4.get data from database and encode for highchart
+  we need two function,a function is for getting result from database,another function is for encoding to json

@@ -27,7 +27,22 @@ class Statistics extends Model
 EOF;
 		$command = $connection->createCommand($sql);
 		$results = $command->queryAll();
- 
+		
 		return $results;
+	}
+	
+	public function getGender_json()
+	{
+		$results=$this->getGender();
+		$rows=array();
+		foreach($results as $row)
+		{	
+			$gender=$row["gender"];
+			$counter=intval($row["counter"]);
+			$rows[]=array($gender,$counter);
+		}
+		
+        $json =  json_encode($rows);
+		return $json;
 	}
 }
