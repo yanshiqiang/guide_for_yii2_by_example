@@ -52,5 +52,8 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    
+	public function actionGender()
+	{
+		return $this->render('gender');
+    }
 }
