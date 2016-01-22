@@ -58,6 +58,8 @@ class SiteController extends Controller
 		//var_dump($data);die;
 		
 		$json =  json_encode($data);
-		return $json;
+		return $this->render('gender',
+							 ['jsondata'=>$json]
+							);
     }
 }

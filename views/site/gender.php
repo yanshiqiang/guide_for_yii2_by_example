@@ -11,7 +11,10 @@ $this->title = '男女比例';
 <div class="statics">
 
       <div class="body-content">
-			Hello World!
+			
+			<?php
+				echo $jsondata;
+			?>
       
     </div>
 </div>
