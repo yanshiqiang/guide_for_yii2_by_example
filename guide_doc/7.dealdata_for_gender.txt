@@ -1,1 +1,2 @@
 1.how to show  the data through Controller
+2.how to data encode use json format ,ready for highchart using.

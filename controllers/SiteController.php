@@ -55,7 +55,9 @@ class SiteController extends Controller
 	{
 		$model=new Statistics();
 		$data=$model->getGender();
-		var_dump($data);die;
-		return $this->render('gender');
+		//var_dump($data);die;
+		
+		$json =  json_encode($data);
+		return $json;
     }
 }
