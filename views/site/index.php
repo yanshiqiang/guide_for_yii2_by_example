@@ -1,4 +1,8 @@
 <?php
+use app\assets\HighchartAsset;
+HighchartAsset::register($this);
+?>
+<?php
 
 /* @var $this yii\web\View */
 
