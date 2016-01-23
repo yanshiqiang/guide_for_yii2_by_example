@@ -32,6 +32,23 @@ EOF;
 		return $results;
 	}
 	
+	public function getMajor()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT  major,count(*) as counter
+			FROM selectclass
+			GROUP BY major
+			ORDER BY counter desc
+EOF;
+		$command = $connection->createCommand($sql);
+		//for get array key number index MUST use this PDO mode
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
+	}
+	
+	
 	/**
 		the param is $results array[][] from db results
 		the array[][0] stand for name
