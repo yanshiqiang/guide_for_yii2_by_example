@@ -62,4 +62,17 @@ class SiteController extends Controller
 							 ['jsondata'=>$data]
 							);
     }
+	
+	public function actionMajor()
+	{
+		$model=new Statistics();
+		$result=$model->getMajor();
+		$data=$model->convert_json($result);
+		//var_dump($data);die;
+		
+		return $this->render('major',
+							 ['jsondata'=>$data]
+							);
+    }
+	
 }
