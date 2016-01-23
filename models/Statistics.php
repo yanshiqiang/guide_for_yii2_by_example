@@ -26,20 +26,25 @@ class Statistics extends Model
 			GROUP BY gender
 EOF;
 		$command = $connection->createCommand($sql);
-		$results = $command->queryAll();
+		//for get array key number index MUST use this PDO mode
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 		return $results;
 	}
 	
-	public function getGender_json()
-	{
-		$results=$this->getGender();
+	/**
+		the param is $results array[][] from db results
+		the array[][0] stand for name
+		the array[][1] stand for number
+	*/
+	public function convert_json($results)
+	{	
 		$rows=array();
 		foreach($results as $row)
 		{	
-			$gender=$row["gender"];
-			$counter=intval($row["counter"]);
-			$rows[]=array($gender,$counter);
+			$name=$row[0];
+			$counter=intval($row[1]);
+			$rows[]=array($name,$counter);
 		}
 		
         $json =  json_encode($rows);

@@ -54,7 +54,8 @@ class SiteController extends Controller
 	public function actionGender()
 	{
 		$model=new Statistics();
-		$data=$model->getGender_json();
+		$result=$model->getGender();
+		$data=$model->convert_json($result);
 		//var_dump($data);die;
 		
 		return $this->render('gender',
