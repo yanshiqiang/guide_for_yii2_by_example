@@ -75,4 +75,15 @@ class SiteController extends Controller
 							);
     }
 	
+	public function actionArea()
+	{
+		$model=new Statistics();
+		$result=$model->getProvince();
+		$data=$model->convert_json($result);
+		//var_dump($data);die;
+		
+		return $this->render('province',
+							 ['jsondata'=>$data]
+							);
+    }	
 }

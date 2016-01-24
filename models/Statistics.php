@@ -48,6 +48,21 @@ EOF;
 		return $results;
 	}
 	
+	public function getProvince()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT  province,count(*) as counter
+			FROM stubaseinfo
+			GROUP BY province
+			ORDER BY counter desc
+EOF;
+		$command = $connection->createCommand($sql);
+		//for get array key number index MUST use this PDO mode
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
+	}
 	
 	/**
 		the param is $results array[][] from db results
