@@ -1,1 +1,2 @@
 select * from selectclass a,stuinfo b where a.stuno=b.stuno 
+create view stubaseinfo as select select b.* from selectclass a,stuinfo b where a.stuno=b.stuno 
