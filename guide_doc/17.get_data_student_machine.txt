@@ -1,0 +1,5 @@
+SELECT Organization,count(*) as counter
+FROM  mac a ,user_mac b
+WHERE a.OUI=SUBSTRING(b.mac,1,8)
+GROUP by Organization 
+ORDER by counter desc
