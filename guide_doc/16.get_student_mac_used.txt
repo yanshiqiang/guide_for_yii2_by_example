@@ -1,0 +1,12 @@
+1. import usermac.csv into usermac table
+   
+CREATE TABLE IF NOT EXISTS `usermac` (
+  `stuno` varchar(8) NOT NULL,
+  `mac` varchar(30) NOT NULL,
+  `ip` varchar(18) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+2. create view ,the user used campus network
+   create view campus_user as select DISTINCT stuno from usermac
+3. create view for mac info
+   create view user_mac as select DISTINCT mac from usermac
