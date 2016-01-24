@@ -1,0 +1,1 @@
+1 update stuinfo set  birthday=SUBSTRING(`idcard`,7,8)
