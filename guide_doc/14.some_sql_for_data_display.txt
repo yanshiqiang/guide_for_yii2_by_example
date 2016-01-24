@@ -1,0 +1,12 @@
+1.student birthday year 
+  select substring(birthday,1,4) as year,count(*) as counter from stubaseinfo group by year order by counter desc 
+2.college statistics
+   select college,count(*) as counter from stubaseinfo group by college order by counter desc
+3.student genre
+   select genre,count(*) as counter from stubaseinfo group by genre order by counter desc
+4.student national
+   select national,count(*) as counter from stubaseinfo group by national order by counter desc
+5 student same birthday
+ select * from ( select birthday,count(*) as counter from stubaseinfo  group by birthday order by counter desc) a where a.counter>1
+6 student come from same school
+  select * from ( select school,count(*) as counter from stubaseinfo  group by school order by counter desc) a where a.counter>1
