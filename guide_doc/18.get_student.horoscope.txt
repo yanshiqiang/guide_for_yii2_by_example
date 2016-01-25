@@ -1,0 +1,89 @@
+select star,count(*) as counter from
+(SELECT stuno ,birthday,
+case 
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-12-22'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-12-31'),'%Y-%m-%d')
+        
+  then  '魔羯座(Capricorn)'
+  WHEN
+		 birthday>=str_to_date(concat(year(birthday),'-01-01'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-01-19'),'%Y-%m-%d')
+   then  '魔羯座(Capricorn)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-01-20'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-02-18'),'%Y-%m-%d')
+        
+  then  '水瓶座(Aquarius)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-02-19'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-03-20'),'%Y-%m-%d')
+        
+  then  '双鱼座(Pisces)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-03-21'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-04-30'),'%Y-%m-%d')
+        
+  then  '牡羊座(Aries)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-04-21'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-05-20'),'%Y-%m-%d')
+        
+  then  '金牛座(Taurus)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-05-21'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-06-21'),'%Y-%m-%d')
+        
+  then  '双子座(Gemini) '
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-06-22'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-07-22'),'%Y-%m-%d')
+        
+  then  '巨蟹座(Cancer)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-07-23'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-08-22'),'%Y-%m-%d')
+        
+  then  '狮子座(Leo)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-08-23'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-09-22'),'%Y-%m-%d')
+        
+  then  '处女座(Virgo)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-09-23'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-10-22'),'%Y-%m-%d')
+        
+  then  '天秤座(Libra)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-10-23'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-11-22'),'%Y-%m-%d')
+        
+  then  '天蝎座(Scorpio)'
+  when 
+         birthday>=str_to_date(concat(year(birthday),'-11-23'),'%Y-%m-%d')
+           and 
+ 		  birthday<=str_to_date(concat(year(birthday),'-12-21'),'%Y-%m-%d')
+        
+  then  '射手座(Sagittarius)'
+   
+
+       
+  end star
+FROM `stuinfo`
+ ) a
+group by star
+order by counter desc
+
