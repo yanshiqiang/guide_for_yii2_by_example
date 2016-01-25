@@ -63,6 +63,18 @@ class SiteController extends Controller
 							);
     }
 	
+	public function actionGrade()
+	{
+		$model=new Statistics();
+		$result=$model->getGrade();
+		$data=$model->convert_json($result);
+		//var_dump($data);die;
+		
+		return $this->render('Grade',
+							 ['jsondata'=>$data]
+							);
+    }	
+
 	public function actionMajor()
 	{
 		$model=new Statistics();

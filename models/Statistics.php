@@ -47,6 +47,21 @@ EOF;
 		
 		return $results;
 	}
+
+  	public function getGrade()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT  grade,count(*) as counter
+			FROM selectclass
+			GROUP BY grade
+EOF;
+		$command = $connection->createCommand($sql);
+		//for get array key number index MUST use this PDO mode
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
+	}
 	
 	public function getProvince()
 	{
