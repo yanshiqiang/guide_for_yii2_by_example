@@ -1,5 +1,5 @@
 <?php
- 
+
 namespace app\models;
  
 use Yii;
@@ -45,10 +45,40 @@ EOF;
 		//for get array key number index MUST use this PDO mode
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
+	       	return $results;
+	}
+        
+                  public function getCollege()
+        {
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT college,count(*) as counter 
+                        FROM stubaseinfo 
+                        GROUP BY college 
+                        ORDER BY counter desc
+EOF;
+		$command = $connection->createCommand($sql);
+		//for get array key number index MUST use this PDO mode
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
 		return $results;
 	}
+                 
+        public function getYear()
+        {
+                $connection = \Yii::$app->db;
+                $sql=<<<EOF
+                        SELECT substring(birthday,1,4) as year,count(*) as counter 
+                        FROM stubaseinfo 
+                        GROUP BY year 
+                        ORDER BY counter desc
+EOF;
+                $command = $connection->createCommand($sql);
+                $result = $command->queryAll(\PDO::FETCH_BOTH);
+                return $result;
+        }
 
-  	public function getGrade()
+        public function getGrade()
 	{
 		$connection = \Yii::$app->db;
 		$sql=<<<EOF
@@ -63,7 +93,35 @@ EOF;
 		return $results;
 	}
 	
-	public function getProvince()
+        public function getGenre()
+        {
+                $connection = \Yii::$app->db;
+                $sql=<<<EOF
+                        SELECT genre,count(*) as counter
+                        FROM stubaseinfo 
+                        GROUP BY genre 
+                        ORDER BY counter desc
+EOF;
+                $command = $connection->createCommand($sql);
+                $result = $command->queryAll(\PDO::FETCH_BOTH);
+                return$result;
+        }
+                  
+        public function getNational()
+        {
+                $connection = \Yii::$app->db;
+                $sql=<<<EOF
+                        SELECT national,count(*) as counter
+                        FROM stubaseinfo 
+                        GROUP BY national 
+                        ORDER BY counter desc
+EOF;
+                $command = $connection->createCommand($sql);
+                $result = $command->queryAll(\PDO::FETCH_BOTH);
+                return$result;
+        }
+
+        public function getProvince()
 	{
 		$connection = \Yii::$app->db;
 		$sql=<<<EOF
@@ -78,7 +136,38 @@ EOF;
 		
 		return $results;
 	}
-	
+                    
+        public function getBirthday()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT  * from ( select birthday,count(*) as counter
+			FROM stubaseinfo
+			GROUP BY birthday
+			ORDER BY counter desc) a where a.counter>1
+EOF;
+		$command = $connection->createCommand($sql);
+		//for get array key number index MUST use this PDO mode
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
+	}
+
+        public function getAlumnus()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT  * from ( select school,count(*) as counter
+			FROM stubaseinfo
+			GROUP BY school
+			ORDER BY counter desc) a where a.counter>1
+EOF;
+		$command = $connection->createCommand($sql);
+		//for get array key number index MUST use this PDO mode
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
+	}
 	/**
 		the param is $results array[][] from db results
 		the array[][0] stand for name
