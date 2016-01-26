@@ -6,40 +6,41 @@ HighchartAsset::register($this);
 
 /* @var $this yii\web\View */
 
-$this->title = '生日分布';
+$this->title = '专业分布';
 ?>
 <?php
 $js=<<<JS
     $('#highchart_show').highcharts({
         chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
+               type: 'column'
         },
         title: {
-            text: '相同生日分布'
+            text: '专业分布'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.y}</b>'
         },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -90,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
                 }
             }
         },
+		yAxis: {
+            min: 0,
+            title: {
+                text: '人数'
+            }
+        },
         series: [{
-            name: 'Gender',
+            name: '人数',
             colorByPoint: true,
-            data: $jsondata,dataLabels: {
+            data: $jsondata,
+			dataLabels: {
                 enabled: true,
                 rotation: -90,
                 color: '#FFFFFF',
