@@ -1,4 +1,5 @@
-e app\assets\HighchartAsset;
+<?php
+use app\assets\HighchartAsset;
 HighchartAsset::register($this);
 ?>
 <?php

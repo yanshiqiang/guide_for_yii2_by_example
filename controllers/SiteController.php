@@ -176,4 +176,14 @@ class SiteController extends Controller
                                                                                                                             ['jsondata'=>$data]
                                                                                                                            );
     }
+    public function actionConstellation()
+    {
+                    $model=new Statistics();
+       		    $result=$model->getConstellation();
+                    $data=$model->convert_json($result);
+                    //var_dump($data);die;
+		    return $this->render('constellation',
+                                                                                                                            ['jsondata'=>$data]
+                                                                                                                           );
+    }
 }

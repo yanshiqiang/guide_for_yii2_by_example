@@ -9,7 +9,7 @@ $js = <<<JS
             type: 'column'
         },
         title: {
-            text: '铁道大学学院分布'
+            text: '铁道大学星座分布图'
         },
         xAxis: {
             type: 'category'
