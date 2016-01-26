@@ -70,7 +70,7 @@ class SiteController extends Controller
 		$data=$model->convert_json($result);
 		//var_dump($data);die;
 		
-		return $this->render('Grade',
+		return $this->render('grade',
 							 ['jsondata'=>$data]
 							);
     }	
