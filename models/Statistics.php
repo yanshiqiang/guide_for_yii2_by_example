@@ -65,7 +65,7 @@ EOF;
         {
                 $connection = \Yii::$app->db;
                 $sql=<<<EOF
-                        SELECT substring(birthday,1,4) as year,count(*) as counter 
+                        SELECT ('2016'-substring(birthday,1,4)) as year,count(*) as counter 
                         FROM stubaseinfo 
                         GROUP BY year 
                         ORDER BY counter desc
