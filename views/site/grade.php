@@ -1,5 +1,6 @@
 <?php
 use app\assets\HighchartAsset;
+HighchartAsset::register($this);
 ?>
 <?php
 $js = <<<JS
