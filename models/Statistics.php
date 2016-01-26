@@ -136,9 +136,9 @@ EOF;
 	{
 		$connection = \Yii::$app->db;
 		$sql=<<<EOF
-			SELECT  * from ( select birthday,count(*) as counter
+			SELECT  * from ( select substring(birthday,6,10) as sameday,count(*) as counter
 			FROM stubaseinfo
-			GROUP BY birthday
+			GROUP BY sameday
 			ORDER BY counter desc) a where a.counter>1
 EOF;
 		$command = $connection->createCommand($sql);

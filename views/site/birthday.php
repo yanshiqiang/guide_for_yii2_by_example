@@ -39,7 +39,18 @@ $js=<<<JS
         series: [{
             name: 'Gender',
             colorByPoint: true,
-            data: $jsondata
+            data: $jsondata,dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                format: '{point.y}', // one decimal
+                y: 0, // 10 pixels down from the top
+                style: {
+                    fontSize: '10px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
 		}],
     });
 JS;
