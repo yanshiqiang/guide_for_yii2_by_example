@@ -26,7 +26,6 @@ class Statistics extends Model
 			GROUP BY gender
 EOF;
 		$command = $connection->createCommand($sql);
-		//for get array key number index MUST use this PDO mode
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 		return $results;
@@ -42,7 +41,6 @@ EOF;
 			ORDER BY counter desc
 EOF;
 		$command = $connection->createCommand($sql);
-		//for get array key number index MUST use this PDO mode
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 	       	return $results;
@@ -58,7 +56,6 @@ EOF;
                         ORDER BY counter desc
 EOF;
 		$command = $connection->createCommand($sql);
-		//for get array key number index MUST use this PDO mode
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 		return $results;
@@ -87,7 +84,6 @@ EOF;
 			GROUP BY grade
 EOF;
 		$command = $connection->createCommand($sql);
-		//for get array key number index MUST use this PDO mode
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 		return $results;
@@ -131,7 +127,6 @@ EOF;
 			ORDER BY counter desc
 EOF;
 		$command = $connection->createCommand($sql);
-		//for get array key number index MUST use this PDO mode
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 		return $results;
@@ -147,7 +142,6 @@ EOF;
 			ORDER BY counter desc) a where a.counter>1
 EOF;
 		$command = $connection->createCommand($sql);
-		//for get array key number index MUST use this PDO mode
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 		return $results;
@@ -163,7 +157,22 @@ EOF;
 			ORDER BY counter desc) a where a.counter>1
 EOF;
 		$command = $connection->createCommand($sql);
-		//for get array key number index MUST use this PDO mode
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
+	}
+
+        public function getOrganization()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT Organization,count(*) as counter
+			FROM  mac a ,user_mac b
+			WHERE a.OUI=SUBSTRING(b.mac,1,8)
+			GROUP BY Organization 
+			ORDER BY counter desc
+EOF;
+		$command = $connection->createCommand($sql);
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 		return $results;
