@@ -42,7 +42,7 @@ $js = <<<JS
         series: [{
             name: 'Brands',
             colorByPoint: true,
-            data: $json
+            data: $jsondata
         }],
     });
 JS;
