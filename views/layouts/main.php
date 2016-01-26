@@ -1,9 +1,4 @@
-<?php
-
-/* @var $this \yii\web\View */
-/* @var $content string */
-
-use yii\helpers\Html;
+e yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -57,6 +52,7 @@ AppAsset::register($this);
 								['label' => '专业', 'url' => ['site/major']],
 								['label' => '校园网', 'url' => ['site/net']],
 								['label' => '校园无线网', 'url' => ['site/wlan']],
+								['label' => '手机型号', 'url' => ['site/organization']],
 								['label' => '年消费分布', 'url' => ['site/purchase']],
 								['label' => '生日分布', 'url' => ['site/birthday']],
 								['label' => '校友分布', 'url' => ['site/alumnus']],
