@@ -49,10 +49,11 @@ AppAsset::register($this);
 			echo Menu::widget([
 						'items' => [
 								['label' => 'Home', 'url' => ['site/index']],
+                                                                ['label' => '民族', 'url' => ['site/national']],                                                                                              ['label' => '出生年份', 'url' => ['site/year']],    
 								['label' => '性别', 'url' => ['site/gender']],
 								['label' => '年龄', 'url' => ['site/age']],
 								['label' => '省市', 'url' => ['site/area']],
-								['label' => '年级', 'url' => ['site/grade']],
+                                                                ['label' => '学院', 'url' => ['site/college']],                                                                                               ['label' => '类型', 'url' => ['site/genre']],                                   						                    ['label' => '年级', 'url' => ['site/grade']],
 								['label' => '专业', 'url' => ['site/major']],
 								['label' => '校园网', 'url' => ['site/net']],
 								['label' => '校园无线网', 'url' => ['site/wlan']],
