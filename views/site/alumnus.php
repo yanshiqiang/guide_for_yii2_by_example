@@ -6,7 +6,7 @@ HighchartAsset::register($this);
 
 /* @var $this yii\web\View */
 
-$this->title = '男女比例';
+$this->title = '校友分布';
 ?>
 <?php
 $js=<<<JS
@@ -18,7 +18,7 @@ $js=<<<JS
             type: 'pie'
         },
         title: {
-            text: '生日分布'
+            text: '校友分布'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.y}</b>'

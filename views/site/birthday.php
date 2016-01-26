@@ -6,7 +6,7 @@ HighchartAsset::register($this);
 
 /* @var $this yii\web\View */
 
-$this->title = '男女比例';
+$this->title = '生日分布';
 ?>
 <?php
 $js=<<<JS
