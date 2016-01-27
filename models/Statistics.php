@@ -179,6 +179,21 @@ EOF;
 		
 		return $results;
 	}
+	
+	public function getRoom()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT substring(room,1,(InStr(`room`, '-')-1)) AS num, COUNT(*) AS counter
+			FROM netuser
+			GROUP BY num
+			ORDER BY counter desc
+EOF;
+		$command = $connection->createCommand($sql);
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
+	}	
 
         public function getConstellation()
 	{

@@ -196,4 +196,14 @@ class SiteController extends Controller
                                                                                                                             ['jsondata'=>$data]
                                                                                                                            );
     }
+    public function actionRoom()
+    {
+                    $model=new Statistics();
+       		    $result=$model->getRoom();
+                    $data=$model->convert_json($result);
+                    //var_dump($data);die;
+		    return $this->render('room',
+                                                                                                                            ['jsondata'=>$data]
+                                                                                                                           );
+    }
 }
