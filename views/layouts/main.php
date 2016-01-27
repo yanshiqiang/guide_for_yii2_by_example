@@ -53,6 +53,7 @@ AppAsset::register($this);
 								['label' => '校园网', 'url' => ['site/net']],
 								['label' => '运营商', 'url' => ['site/isp']],
 								['label' => '校园无线网', 'url' => ['site/wlan']],
+								['label' => '宿舍', 'url' => ['site/room']],
 								['label' => '手机型号', 'url' => ['site/organization']],
 								['label' => '年消费分布', 'url' => ['site/purchase']],
 								['label' => '生日分布', 'url' => ['site/birthday']],
