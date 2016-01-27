@@ -137,9 +137,11 @@ EOF;
 		$connection = \Yii::$app->db;
 		$sql=<<<EOF
 			SELECT  * from ( select substring(birthday,6,10) as sameday,count(*) as counter
-			FROM stubaseinfo
-			GROUP BY sameday
-			ORDER BY counter desc) a where a.counter>1
+							FROM stubaseinfo
+							GROUP BY sameday
+							ORDER BY counter desc) a 
+			where a.counter>1
+			order by sameday
 EOF;
 		$command = $connection->createCommand($sql);
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
