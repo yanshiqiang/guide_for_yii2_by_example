@@ -51,6 +51,7 @@ AppAsset::register($this);
                                                                 ['label' => '学院', 'url' => ['site/college']],                                                                                               ['label' => '类型', 'url' => ['site/genre']],                                   						                    ['label' => '年级', 'url' => ['site/grade']],
 								['label' => '专业', 'url' => ['site/major']],
 								['label' => '校园网', 'url' => ['site/net']],
+								['label' => '运营商', 'url' => ['site/isp']],
 								['label' => '校园无线网', 'url' => ['site/wlan']],
 								['label' => '手机型号', 'url' => ['site/organization']],
 								['label' => '年消费分布', 'url' => ['site/purchase']],
