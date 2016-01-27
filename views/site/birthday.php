@@ -6,7 +6,7 @@ HighchartAsset::register($this);
 
 /* @var $this yii\web\View */
 
-$this->title = '专业分布';
+$this->title = '生日分布';
 ?>
 <?php
 $js=<<<JS
@@ -15,7 +15,7 @@ $js=<<<JS
                type: 'column'
         },
         title: {
-            text: '专业分布'
+            text: '生日分布'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.y}</b>'

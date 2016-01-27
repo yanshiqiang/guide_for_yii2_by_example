@@ -250,33 +250,50 @@ EOF;
  		            birthday<=str_to_date(concat(year(birthday),'-10-22'),'%Y-%m-%d')
         
                            then  '天秤座(Libra)'
-                       when 
-                           birthday>=str_to_date(concat(year(birthday),'-10-23'),'%Y-%m-%d')
-                           and 
- 		           birthday<=str_to_date(concat(year(birthday),'-11-22'),'%Y-%m-%d')
+                        when 
+                            birthday>=str_to_date(concat(year(birthday),'-10-23'),'%Y-%m-%d')
+                            and 
+ 		            birthday<=str_to_date(concat(year(birthday),'-11-22'),'%Y-%m-%d')
         
-                           then  '天蝎座(Scorpio)'
-                       when 
-                           birthday>=str_to_date(concat(year(birthday),'-11-23'),'%Y-%m-%d')
-                           and 
- 		           birthday<=str_to_date(concat(year(birthday),'-12-21'),'%Y-%m-%d')
+                            then  '天蝎座(Scorpio)'
+                        when 
+                            birthday>=str_to_date(concat(year(birthday),'-11-23'),'%Y-%m-%d')
+                            and 
+ 		            birthday<=str_to_date(concat(year(birthday),'-12-21'),'%Y-%m-%d')
         
-                           then  '射手座(Sagittarius)'
+                            then  '射手座(Sagittarius)'
    
 
        
-                          end star
-                      FROM `stuinfo`
-                            ) a
-                      GROUP BY star
-                      ORDER BY counter desc
+                            end star
+                        FROM `stuinfo`
+                              ) a
+                        GROUP BY star
+                        ORDER BY counter desc
 EOF;
 		$command = $connection->createCommand($sql);
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 		return $results;
 	}
-
+	public function getIsp()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT isp, counter
+			FROM (SELECT substring(phone,1,3) as num,count(*) as counter 
+                              FROM  netuser 
+                              GROUP BY num 
+                              ORDER BY counter desc) a,isp_num b 
+			WHERE a.num=b.num
+			GROUP BY isp
+			ORDER BY counter desc
+EOF;
+		$command = $connection->createCommand($sql);
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
+	}
 	/**
 		the param is $results array[][] from db results
 		the array[][0] stand for name

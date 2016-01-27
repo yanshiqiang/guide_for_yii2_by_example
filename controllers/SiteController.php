@@ -186,4 +186,14 @@ class SiteController extends Controller
                                                                                                                             ['jsondata'=>$data]
                                                                                                                            );
     }
+    public function actionIsp()
+    {
+                    $model=new Statistics();
+       		    $result=$model->getIsp();
+                    $data=$model->convert_json($result);
+                    //var_dump($data);die;
+		    return $this->render('isp',
+                                                                                                                            ['jsondata'=>$data]
+                                                                                                                           );
+    }
 }
