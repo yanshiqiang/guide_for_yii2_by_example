@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Html;
 use app\assets\HighchartAsset;
 HighchartAsset::register($this);
 ?>
@@ -8,6 +9,8 @@ HighchartAsset::register($this);
 
 $this->title = '生日分布';
 ?>
+<?=Html::jsFile('http://api.map.baidu.com/api?v=2.0&ak=GU3l1cPEPLt6hd1kFrL4VHGh')?>
+<?=Html::jsFile('@web/js/baiduapi.js')?>
 <?php
 $js=<<<JS
     $('#highchart_show').highcharts({
