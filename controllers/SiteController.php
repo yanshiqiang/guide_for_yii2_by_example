@@ -217,4 +217,15 @@ class SiteController extends Controller
                                                                                                                             ['jsondata'=>$data]
                                                                                                                            );
     }
+	
+    public function actionWlan()
+    {
+                    $model=new Statistics();
+       		    $result=$model->getWlan();
+                    $data=$model->convert_json($result);
+                    //var_dump($data);die;
+		    return $this->render('wlan',
+                                                                                                                            ['jsondata'=>$data]
+                                                                                                                           );
+    }
 }

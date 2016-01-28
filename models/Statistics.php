@@ -311,6 +311,22 @@ EOF;
 		
 		return $results;
 	}
+	public function getWlan()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT '无线用户' AS '类型' , COUNT(DISTINCT stuno) AS wlan 
+			FROM (SELECT stuno,ip FROM user_mac WHERE ip LIKE '10.201%' OR ip LIKE '10.202%' ) a 
+			UNION 
+			SELECT '网线用户' AS '类型',COUNT(DISTINCT stuno) AS counter 
+			FROM user_mac
+EOF;
+		$command = $connection->createCommand($sql);
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		$results[1][1]=$results[1][1]-$results[0][1];
+		//var_dump($results);die;
+		return $results;
+	}
 	
 	public function getNet()
 	{
