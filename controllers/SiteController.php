@@ -206,4 +206,15 @@ class SiteController extends Controller
                                                                                                                             ['jsondata'=>$data]
                                                                                                                            );
     }
+
+    public function actionNet()
+    {
+                    $model=new Statistics();
+       		    $result=$model->getNet();
+                    $data=$model->convert_json($result);
+                    //var_dump($data);die;
+		    return $this->render('net',
+                                                                                                                            ['jsondata'=>$data]
+                                                                                                                           );
+    }
 }

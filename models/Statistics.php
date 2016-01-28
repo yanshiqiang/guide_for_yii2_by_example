@@ -311,6 +311,23 @@ EOF;
 		
 		return $results;
 	}
+	
+	public function getNet()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT '校园网用户' AS 'net', COUNT(*) AS counter
+			FROM netuser
+			UNION
+			SELECT '非校园网用户' AS 'net', (COUNT(*)-b.counter) AS counter
+			FROM selectclass a,(SELECT 'netusr' AS 'net', COUNT(*) AS counter FROM netuser) b
+EOF;
+		$command = $connection->createCommand($sql);
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
+	}	
+
 	/**
 		the param is $results array[][] from db results
 		the array[][0] stand for name
