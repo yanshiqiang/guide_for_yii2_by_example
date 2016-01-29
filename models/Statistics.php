@@ -342,6 +342,22 @@ EOF;
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
 		
 		return $results;
+	}
+	
+	public function getPurchase()
+	{
+		$connection = \Yii::$app->db;
+		$sql=<<<EOF
+			SELECT a.desc,b.fee AS counter 
+			FROM  acccode a,stucust b 
+			WHERE a.id=b.acccode 
+			GROUP BY a.desc
+			ORDER BY counter DESC
+EOF;
+		$command = $connection->createCommand($sql);
+		$results = $command->queryAll(\PDO::FETCH_BOTH);
+		
+		return $results;
 	}	
 
 	/**
@@ -360,6 +376,7 @@ EOF;
 		}
 		
         $json =  json_encode($rows);
+	//var_dump($json);die;
 		return $json;
 	}
 }
