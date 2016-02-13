@@ -348,7 +348,7 @@ EOF;
 	{
 		$connection = \Yii::$app->db;
 		$sql=<<<EOF
-			SELECT a.desc,b.fee AS counter 
+			SELECT a.desc,SUM(b.fee) AS counter 
 			FROM  acccode a,stucust b 
 			WHERE a.id=b.acccode 
 			GROUP BY a.desc
@@ -356,7 +356,7 @@ EOF;
 EOF;
 		$command = $connection->createCommand($sql);
 		$results = $command->queryAll(\PDO::FETCH_BOTH);
-		
+		//var_dump($results);
 		return $results;
 	}	
 
@@ -376,7 +376,7 @@ EOF;
 		}
 		
         $json =  json_encode($rows);
-	//var_dump($json);die;
+	//var_dump($json);
 		return $json;
 	}
 }

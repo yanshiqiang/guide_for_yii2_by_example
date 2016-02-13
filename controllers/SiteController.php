@@ -1,7 +1,5 @@
 <?php
-
 namespace app\controllers;
-
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -57,9 +55,9 @@ class SiteController extends Controller
                      $result=$model->getGender();
 	             $data=$model->convert_json($result);
                      //var_dump($data);die;
-		
-	             return $this->render('gender',
-							                                                                    ['jsondata'=>$data]
+		     $title=json_encode(array('text'=>'性别'));
+	             return $this->render('pie',
+							                                                                    ['jsondata'=>$data,'title'=>$title]
 							                                                                   );
     }
 	
@@ -69,9 +67,9 @@ class SiteController extends Controller
 	             $result=$model->getGrade();
                      $data=$model->convert_json($result);
 	             //var_dump($data);die;
-		
-	             return $this->render('grade',
-						                                                                            ['jsondata'=>$data]
+		     $title=json_encode(array('text'=>'年级'));
+	             return $this->render('histogram',
+						                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                              					           );
     }	
 
@@ -80,9 +78,10 @@ class SiteController extends Controller
                      $model=new Statistics();
                      $result=$model->getYear();
                      $data=$model->convert_json($result);
-                     //   var_dump($data);die();
-                     return $this->render('year',
-                                                                                                                            ['jsondata'=>$data]
+                     //var_dump($data);die();
+		     $title=json_encode(array('text'=>'年龄'));
+                     return $this->render('pie',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
    }
    
@@ -91,9 +90,10 @@ class SiteController extends Controller
                      $model=new Statistics();
                      $result=$model->getCollege();
                      $data=$model->convert_json($result);
-                      //   var_dump($data);die();
-                     return $this->render('college',
-                                                                                                                            ['jsondata'=>$data]
+                     //var_dump($data);die();
+		     $title=json_encode(array('text'=>'学院'));
+                     return $this->render('histogram',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
    } 
 
@@ -103,9 +103,9 @@ class SiteController extends Controller
                      $result=$model->getMajor();
                      $data=$model->convert_json($result);
                       //var_dump($data);die;
-	  	
-                     return $this->render('major',
-							                                                                   ['jsondata'=>$data]
+	  	     $title=json_encode(array('text'=>'专业'));
+                     return $this->render('histogram',
+							                                                                   ['jsondata'=>$data,'title'=>$title]
 							                                                                  );
   }
 	
@@ -115,8 +115,9 @@ class SiteController extends Controller
                      $result=$model->getGenre();
                      $data=$model->convert_json($result);
                      //var_dump($data);die;
-                     return $this->render('genre',
-                                                                                                                            ['jsondata'=>$data]
+		     $title=json_encode(array('text'=>'类型'));
+                     return $this->render('pie',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
                        
   } 
@@ -127,9 +128,9 @@ class SiteController extends Controller
                     $result=$model->getProvince();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-	
-                    return $this->render('province',
-                                  					                                                    ['jsondata'=>$data]
+	            $title=json_encode(array('text'=>'省市'));
+                    return $this->render('histogram',
+                                  					                                                    ['jsondata'=>$data,'title'=>$title]
                                                                            						   );
     }	
     public function actionNational()
@@ -138,9 +139,9 @@ class SiteController extends Controller
                     $result=$model->getNational();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		
-                    return $this->render('national',
-                                  						                                            ['jsondata'=>$data]
+		    $title=json_encode(array('text'=>'民族'));
+                    return $this->render('histogram',
+                                  						                                            ['jsondata'=>$data,'title'=>$title]
 							                                                                   );
     }
     
@@ -150,9 +151,9 @@ class SiteController extends Controller
                     $result=$model->getBirthday();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		
-                    return $this->render('birthday',
-                                   						                                            ['jsondata'=>$data]
+		    $title=json_encode(array('text'=>'生日分布'));
+                    return $this->render('histogram',
+                                   						                                            ['jsondata'=>$data,'title'=>$title]
 							                                                                   );
     }
     public function actionAlumnus()
@@ -161,9 +162,9 @@ class SiteController extends Controller
                     $result=$model->getAlumnus();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		
-                    return $this->render('alumnus',
-                                   						                                            ['jsondata'=>$data]
+		    $title=json_encode(array('text'=>'校友分布'));
+                    return $this->render('histogram',
+                                   						                                            ['jsondata'=>$data,'title'=>$title]
 							                                                                   );
     }
     public function actionOrganization()
@@ -172,8 +173,9 @@ class SiteController extends Controller
        		    $result=$model->getOrganization();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		    return $this->render('organization',
-                                                                                                                            ['jsondata'=>$data]
+   		    $title=json_encode(array('text'=>'手机型号'));
+		    return $this->render('pie',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
     }
     public function actionConstellation()
@@ -182,8 +184,9 @@ class SiteController extends Controller
        		    $result=$model->getConstellation();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		    return $this->render('constellation',
-                                                                                                                            ['jsondata'=>$data]
+  		    $title=json_encode(array('text'=>'星座'));
+		    return $this->render('histogram',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
     }
     public function actionIsp()
@@ -192,8 +195,9 @@ class SiteController extends Controller
        		    $result=$model->getIsp();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		    return $this->render('isp',
-                                                                                                                            ['jsondata'=>$data]
+		    $title=json_encode(array('text'=>'运营商'));
+		    return $this->render('pie',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
     }
     public function actionRoom()
@@ -202,8 +206,9 @@ class SiteController extends Controller
        		    $result=$model->getRoom();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		    return $this->render('room',
-                                                                                                                            ['jsondata'=>$data]
+		    $title=json_encode(array('text'=>'宿舍'));
+		    return $this->render('histogram',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
     }
 
@@ -213,8 +218,9 @@ class SiteController extends Controller
        		    $result=$model->getNet();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		    return $this->render('net',
-                                                                                                                            ['jsondata'=>$data]
+  		    $title=json_encode(array('text'=>'校园网'));
+		    return $this->render('pie',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
     }
 
@@ -224,8 +230,9 @@ class SiteController extends Controller
        		    $result=$model->getPurchase();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		    return $this->render('purchase',
-                                                                                                                            ['jsondata'=>$data]
+		    $title=json_encode(array('text'=>'年消费分布'));
+		    return $this->render('histogram',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
     }
 	
@@ -235,8 +242,9 @@ class SiteController extends Controller
        		    $result=$model->getWlan();
                     $data=$model->convert_json($result);
                     //var_dump($data);die;
-		    return $this->render('wlan',
-                                                                                                                            ['jsondata'=>$data]
+		    $title=json_encode(array('text'=>'校园无线网'));
+		    return $this->render('pie',
+                                                                                                                            ['jsondata'=>$data,'title'=>$title]
                                                                                                                            );
     }
 }
