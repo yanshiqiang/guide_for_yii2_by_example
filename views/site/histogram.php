@@ -6,7 +6,7 @@ HighchartAsset::register($this);
 
 /* @var $this yii\web\View */
 
-$this->title = '省市分布';
+$this->title = '分布图';
 ?>
 <?php
 $js=<<<JS
@@ -15,7 +15,7 @@ $js=<<<JS
                type: 'column'
         },
         title: {
-            text: '省市分布'
+            text: ''
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.y}</b>'
